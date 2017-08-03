@@ -5,4 +5,5 @@ package com.lp.gameclient.adapter;
  */
 
 public class NewsAdapter {
+
 }
