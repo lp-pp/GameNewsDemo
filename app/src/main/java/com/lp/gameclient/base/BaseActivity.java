@@ -1,11 +1,11 @@
 package com.lp.gameclient.base;
 
-import android.app.Activity;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 /**
  * Created by LP on 2017/8/1/19:28.
  */
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends RxAppCompatActivity {
 
 }
