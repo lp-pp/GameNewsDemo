@@ -8,18 +8,17 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 import com.lp.gameclient.base.BaseActivity;
+import com.lp.gameclient.utils.ActivityUtil;
 import com.lp.gamenewsdemo.R;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
-import java.util.PrimitiveIterator;
 
 import static com.github.fafaldo.fabtoolbar.R.styleable.FABToolbarLayout;
 
 
 /**
- * Created by LP on 2017/8/1/19:28.
+ * Created by LP on 2017/8/10/19:28.
  */
 
 public class MainActivity extends BaseActivity {
@@ -79,6 +78,13 @@ public class MainActivity extends BaseActivity {
     }
 
     private void showSelectedTab() {
+        String strExtra = getIntent().getStringExtra(ActivityUtil.ARG_1);
+        String mPostion = strExtra == null ? "" + MODULE_NEWS : strExtra;
+        int tabPostion = Integer.parseInt(mPostion);
+        showSelectFragment(tabPostion);
+    }
+
+    private void showSelectFragment(int tabPostion) {
 
     }
 
@@ -110,7 +116,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void hideAllFragment() {
-
+        for (Fragment f: mFragmentlist) {
+            mTransaction.hide(f);
+        }
     }
 
     @Override
