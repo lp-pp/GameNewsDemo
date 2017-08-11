@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fabtoolbar_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="@dimens/forty_eight"
+    android:layout_height="@dimen/forty_eight"
     android:layout_alignParentBottom="true"
     android:background="@color/black_161212"
     android:gravity="center_vertical"
