@@ -14,4 +14,6 @@ public class MeFragment extends BaseFragment {
     public static MeFragment newInstance(){
         return new MeFragment();
     }
+
+
 }

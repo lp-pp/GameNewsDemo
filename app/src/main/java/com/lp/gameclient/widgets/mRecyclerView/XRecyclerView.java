@@ -7,4 +7,10 @@ import android.support.v7.widget.RecyclerView;
  */
 
 public class XRecyclerView extends RecyclerView {
+
+    public interface LoadingListener{
+        void onRefresh();
+
+        void onLoadMore();
+    }
 }
