@@ -1,7 +1,6 @@
 package com.lp.gameclient.base;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lp.gameclient.widgets.mRecyclerView.XRecyclerView;
-import com.trello.rxlifecycle.components.RxFragment;
+import com.trello.rxlifecycle.components.support.RxFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

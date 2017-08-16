@@ -15,7 +15,7 @@ public class ActivityUtil {
 
     public static final String ARG_1 = "arg1";
 
-    public void static start(Context context, Class<? extends Activity> clazz, String arg1){
+    public static void start(Context context, Class<? extends Activity> clazz, String arg1){
         Intent intent = new Intent(context, clazz);
         Bundle bundle = new Bundle();
         bundle.putString(ARG_1, arg1);

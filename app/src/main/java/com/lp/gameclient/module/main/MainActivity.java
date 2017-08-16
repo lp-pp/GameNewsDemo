@@ -128,7 +128,7 @@ public class MainActivity extends BaseActivity {
     private void restoreFragment() {
         List<Fragment> fragments = mFragmentManager.getFragments();
         for (Fragment fragment : fragments){
-            if (fragment instanceof NewsFragment){
+            if (fragment instanceof NewsFragment)
                 mNewsFragment = (NewsFragment) fragment;
             else if (fragment instanceof VideoFragment)
                 mVideoFragment = (VideoFragment) fragment;
