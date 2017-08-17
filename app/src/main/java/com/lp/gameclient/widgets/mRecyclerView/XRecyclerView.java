@@ -8,6 +8,12 @@ import android.support.v7.widget.RecyclerView;
 
 public class XRecyclerView extends RecyclerView {
 
+    private LoadingListener mLoadingListener;
+
+    public void setLoadingListenr(LoadingListener lls){
+        this.mLoadingListener = lls;
+    }
+
     public interface LoadingListener{
         void onRefresh();
 
