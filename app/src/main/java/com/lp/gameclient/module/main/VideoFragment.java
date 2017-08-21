@@ -5,12 +5,16 @@ import android.view.View;
 
 import com.lp.gameclient.adapter.common.RecyclerAdapter;
 import com.lp.gameclient.base.BaseFragment;
+import com.lp.gameclient.data.models.BaseVideoEntity;
 import com.lp.gameclient.data.models.VideoEntity;
+import com.lp.gameclient.data.models.VideoListEntity;
 import com.lp.gameclient.data.repository.VideoRepo;
+import com.lp.gameclient.data.retrofit.DefaultSubscriber;
 import com.lp.gameclient.utils.LayoutHelper;
 import com.lp.gameclient.widgets.MultipleStatusView;
 import com.lp.gameclient.widgets.mRecyclerView.XRecyclerView;
 import com.lp.gamenewsdemo.R;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.BindView;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
@@ -65,11 +69,25 @@ public class VideoFragment extends BaseFragment {
     }
 
     private void initVideoListData(int mPage) {
-        VideoRepo.getIntance().getVideoList();
+        VideoRepo.getIntance().getVideoList(mPage, mContext)
+                .compose(bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(new DefaultSubscriber<BaseVideoEntity<VideoListEntity>>() {
+                    @Override
+                    public void _onNext(BaseVideoEntity<VideoListEntity> entity) {
+
+                    }
+
+                    @Override
+                    public void onCompleted() {
+
+                    }
+                });
     }
 
     private void setAdapter() {
+        mAdatpter = new RecyclerAdapter<VideoEntity>(mContext, R.id.item_video){
 
+        };
     }
 
     @Override
