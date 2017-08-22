@@ -37,7 +37,7 @@
                 style="@style/TextViewDarkWrapContent_10"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/tv_pubtime"
+                android:layout_toLeftOf="@+id/tv_pubtime"
                 tools:text="来源：游戏头条"/>
 
             <TextView
@@ -46,7 +46,7 @@
                 android:layout_alignBottom="@id/tv_sourceName"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="12dp"
-                android:layout_toLeftOf="@id/tv_watchNum"
+                android:layout_toLeftOf="@+id/tv_watchNum"
                 tools:text="2小时前"/>
         </RelativeLayout>
     </LinearLayout>

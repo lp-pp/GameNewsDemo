@@ -17,7 +17,6 @@ import com.lp.gamenewsdemo.R;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.BindView;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
  * Created by LP on 2017/8/16/18:31.
@@ -85,7 +84,7 @@ public class VideoFragment extends BaseFragment {
     }
 
     private void setAdapter() {
-        mAdatpter = new RecyclerAdapter<VideoEntity>(mContext, R.id.item_video){
+        mAdatpter = new RecyclerAdapter<VideoEntity>(mContext, R.layout.item_video){
 
         };
     }
