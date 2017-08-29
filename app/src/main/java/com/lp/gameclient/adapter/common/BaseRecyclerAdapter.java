@@ -20,14 +20,16 @@ public abstract class BaseRecyclerAdapter<T, H extends RecyclerAdatpterHelper>
     protected final ArrayList<T> data;
 
     public BaseRecyclerAdapter(Context context, int... layoutResIds){
-        super(context, layoutResIds);
+        this(context, null, layoutResIds);
     }
 
     public BaseRecyclerAdapter(Context context, List<T> data, int... layoutResIds){
         this.context = context;
-        this.layoutInflater = layoutResIds;
+        this.layoutResIds = layoutResIds;
         this.layoutInflater = LayoutInflater.from(context);
         this.data = data == null ? new ArrayList<T>() : new ArrayList(data);
     }
+
+
 
 }

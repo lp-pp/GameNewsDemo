@@ -1,11 +1,13 @@
 package com.lp.gameclient.adapter.common;
 
+import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import static android.R.attr.value;
+import com.lp.gameclient.utils.GlideUtil;
 
 /**
  * Created by LP on 2017/8/22/20:05.
@@ -37,6 +39,18 @@ public abstract class BaseAdapterHelper<T>{
     public T setText(int viewId, @StringRes int stringRes){
         TextView view = retrieveView(viewId);
         view.setText(stringRes);
+        return (T) this;
+    }
+
+    public T setEnable(int viewId, boolean isEnable){
+        TextView view = retrieveView(viewId);
+        view.setEnabled(isEnable);
+        return (T) this;
+    }
+
+    public T setImageResource(int viewId, @DrawableRes int imageRes){
+        ImageView view = retrieveView(viewId);
+        GlideUtil.loadImage(imageRes, view);
         return (T) this;
     }
 
