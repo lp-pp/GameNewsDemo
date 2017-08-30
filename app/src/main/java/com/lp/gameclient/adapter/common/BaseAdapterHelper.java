@@ -14,6 +14,7 @@ import android.text.util.Linkify;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Checkable;
 import android.widget.CheckedTextView;
