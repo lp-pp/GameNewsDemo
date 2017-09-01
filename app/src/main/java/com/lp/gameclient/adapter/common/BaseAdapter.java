@@ -1,34 +1,32 @@
 package com.lp.gameclient.adapter.common;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by LP on 2017/8/31/19:24.
+ * Created by Lipeng on 2017/9/1.
  */
 
-public abstract class BaseRecyclerAdapter<T, H extends RecyclerAdatpterHelper>
-        extends RecyclerView.Adapter<ViewHolder> implements DataIO<T>{
+public abstract class BaseAdapter<T, H extends AdapterHelper>
+        extends android.widget.BaseAdapter implements DataIO<T> {
 
     protected final Context context;
     protected final int[] layoutResIds;
-    protected final LayoutInflater layoutInflater;
     protected final ArrayList<T> data;
 
-    public BaseRecyclerAdapter(Context context, int... layoutResIds){
+    public BaseAdapter(Context context, int... layoutResIds){
         this(context, null, layoutResIds);
     }
 
-    public BaseRecyclerAdapter(Context context, List<T> data, int... layoutResIds){
+    public BaseAdapter(Context context, List<T> data, int... layoutResIds){
+        if (layoutResIds.length == 0)
+            throw new RuntimeException("Has no layout to attachc");
         this.context = context;
         this.layoutResIds = layoutResIds;
-        this.layoutInflater = LayoutInflater.from(context);
         this.data = data == null ? new ArrayList<T>() : new ArrayList(data);
     }
 
@@ -48,74 +46,78 @@ public abstract class BaseRecyclerAdapter<T, H extends RecyclerAdatpterHelper>
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        int layoutResId;
-        if (getViewTypeCount() > 1)
-            layoutResId = getLayoutresId(getItemViewType(viewType));
-        else
-            layoutResId = layoutResIds[0];
-        return new ViewHolder(layoutInflater.inflate(layoutResId, parent, false)){};
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        H helper = getAdapterHelper(holder);
-        T item = get(position);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        H helper;
+        if (getViewTypeCount() > 1){
+            helper = getAdapterHelper(position, convertView, parent, getLayoutresId(getItemViewType(position)));
+        } else {
+            helper = getAdapterHelper(position, convertView, parent, layoutResIds[0]);
+        }
+        T item = (T) getItem(position);
         convert(helper, item);
+        return helper.getItemView();
     }
 
     @Override
-    public int getItemCount() {
+    public boolean isEnabled(int position) {
+        return position < data.size();
+    }
+
+    @Override
+    public int getCount() {
         return getSize();
+    }
+
+    @Override
+    public T getItem(int position) {
+        return get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public void add(T elem) {
         data.add(elem);
         notifyDataSetChanged();
-        onDataSetChanged();
     }
 
     @Override
     public void addAt(int location, T elem) {
         data.add(location, elem);
         notifyDataSetChanged();
-        onDataSetChanged();
     }
 
     @Override
     public void addAll(List<T> elements) {
         data.addAll(elements);
         notifyDataSetChanged();
-        onDataSetChanged();
     }
 
     @Override
     public void addAllAt(int location, List<T> elements) {
         data.addAll(location, elements);
         notifyDataSetChanged();
-        onDataSetChanged();
     }
 
     @Override
     public void remove(T elem) {
         data.remove(elem);
         notifyDataSetChanged();
-        onDataSetChanged();
     }
 
     @Override
     public void removeAll(List<T> elements) {
         data.removeAll(elements);
         notifyDataSetChanged();
-        onDataSetChanged();
     }
 
     @Override
     public void removeAt(int index) {
         data.remove(index);
         notifyDataSetChanged();
-        onDataSetChanged();
     }
 
     @Override
@@ -123,7 +125,6 @@ public abstract class BaseRecyclerAdapter<T, H extends RecyclerAdatpterHelper>
         if (data != null && data.size() > 0){
             data.clear();
             notifyDataSetChanged();
-            onDataSetChanged();
         }
     }
 
@@ -144,7 +145,6 @@ public abstract class BaseRecyclerAdapter<T, H extends RecyclerAdatpterHelper>
             data.clear();
         data.addAll(elements);
         notifyDataSetChanged();
-        onDataSetChanged();
     }
 
     @Override
@@ -169,7 +169,9 @@ public abstract class BaseRecyclerAdapter<T, H extends RecyclerAdatpterHelper>
         return data.contains(elem);
     }
 
-    private void onDataSetChanged() {
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
         if (getSize() == 0)
             onEmptyData();
         else
@@ -178,15 +180,14 @@ public abstract class BaseRecyclerAdapter<T, H extends RecyclerAdatpterHelper>
 
     @Override
     public void onEmptyData() {
-
     }
 
     @Override
     public void onHasData() {
-
     }
 
     protected abstract void convert(H helper, T item);
 
-    public abstract H getAdapterHelper(ViewHolder viewHolder);
+    public abstract H getAdapterHelper(int position, View convertView, ViewGroup parent, int layoutResId);
+
 }
