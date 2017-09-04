@@ -54,7 +54,6 @@ public class NewsAdapter extends RecyclerAdapter<NewsEntity> {
                 helper.setImageUrl(R.id.iv_thumb, img.get(0).getUrl(), false)
                         .setImageUrl(R.id.iv_thumb2, img.get(1).getUrl(), false)
                         .setImageUrl(R.id.iv_thumb3, img.get(2).getUrl(), false);
-
             }
         }
     }
