@@ -19,4 +19,12 @@ public class XRecyclerView extends RecyclerView {
 
         void onLoadMore();
     }
+
+    public void loadMoreComplete() {
+
+    }
+
+    public void refreshComplete() {
+
+    }
 }
