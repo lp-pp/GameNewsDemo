@@ -77,6 +77,6 @@ public class NewsAdapter extends RecyclerAdapter<NewsEntity> {
         else if (viewType == TEMPLATE_ONE_SMALL_PIC)
             return R.layout.item_news_template4;
         else
-            return R.layout.item_news_template1
+            return R.layout.item_news_template1;
     }
 }

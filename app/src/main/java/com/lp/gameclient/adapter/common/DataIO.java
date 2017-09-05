@@ -27,7 +27,7 @@ public interface DataIO<T> {
 
     void replace(T oldElem, T newElem);
 
-    void replaceAll(List<T> elements)
+    void replaceAll(List<T> elements);
 
     void replaceAt(int index, T elem);
 
