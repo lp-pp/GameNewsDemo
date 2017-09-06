@@ -17,7 +17,7 @@ public class C {
             PAGESIZE = "pageSize",
             CATEID = "catid",
             TOKEN = "token",
-            DIVICE = "device",
+            DEVICE = "device",
             PAGENO = "pageNo",
             F_Token = "token";
 }

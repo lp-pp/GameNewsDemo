@@ -10,7 +10,6 @@ import rx.schedulers.Schedulers;
 
 public abstract class BaseRepo {
 
-
     //对rst进行判断再做处理
     protected Observable transform(Observable observable) {
         return observable.subscribeOn(Schedulers.io())

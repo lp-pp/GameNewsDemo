@@ -83,7 +83,7 @@ public class PictureFragment extends BaseFragment {
     }
 
     private void getImageListData(int page) {
-        ImageRepo.getIns().getImageList(page)
+        ImageRepo.getInstance().getImageList(page)
                 .compose(bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe(new DefaultSubscriber<ImageListEntity>() {
                     @Override
