@@ -10,6 +10,7 @@ import com.lp.gameclient.data.models.VideoListEntity;
 import com.lp.gameclient.data.retrofit.DefaultSubscriber;
 import com.lp.gameclient.data.retrofit.RetrofitClient;
 import com.lp.gameclient.utils.C;
+import com.lp.gameclient.utils.SPUtil;
 
 import rx.Observable;
 
@@ -46,8 +47,10 @@ public class VideoRepo extends BaseRepo{
                     @Override
                     public void _onNext(BaseVideoEntity<TokenEntity> entity) {
                         TokenEntity tokenEntity = entity.returnData;
+                        C.token = tokenEntity.userToken;
+                        SPUtil.put(C.F_Token, context, C.TOKEN, tokenEntity.userToken);
                     }
-                })
+                });
     }
 
     /**
