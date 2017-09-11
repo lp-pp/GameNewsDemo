@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * Created by LP on 2017/9/7/14:29.
@@ -104,6 +105,46 @@ public class SPUtil {
         SharedPreferencesCompat.apply(editor);
     }
 
+    /**
+     * 移除某一个key已对应的值
+     * @param context
+     * @param key
+     */
+    public static void remove(Context context, String key){
+        SharedPreferences sp = context.getSharedPreferences(F_SETTINGS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.remove(key);
+        SharedPreferencesCompat.apply(editor);
+    }
+
+    /**
+     * 清除所有数据
+     * @param context
+     * @param fileName
+     */
+    public static void clearAll(Context context, String fileName){
+        SharedPreferences sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        SharedPreferencesCompat.apply(editor);
+    }
+
+    /**
+     * 查询某一个key是否已经存在
+     * @param context
+     * @param key
+     * @return
+     */
+    public static boolean contains(Context context, String key){
+        SharedPreferences sp = context.getSharedPreferences(F_SETTINGS, Context.MODE_PRIVATE);
+        return sp.contains(key);
+
+    }
+
+    public static Map<String, ?> getAll(Context context, String fileName){
+        SharedPreferences sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
+        return sp.getAll();
+    }
 
     /**
      * 创建一个解决SharedPreferencesCompat.apply方法的一个兼容类
