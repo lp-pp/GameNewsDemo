@@ -118,7 +118,7 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
             mProgressBar.setVisibility(View.INVISIBLE);
         }
 
-        switch(state){
+        switch (state) {
             case STATE_NORMAL:
                 if (mState == STATE_RELEASE_TO_REFRESH) {
                     mArrowImageView.startAnimation(mRotateDownAnim);
@@ -135,15 +135,14 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
                     mStatusTextView.setText(R.string.listview_header_hint_release);
                 }
                 break;
-            case     STATE_REFRESHING:
+            case STATE_REFRESHING:
                 mStatusTextView.setText(R.string.refreshing);
                 break;
-            case    STATE_DONE:
+            case STATE_DONE:
                 mStatusTextView.setText(R.string.refresh_done);
                 break;
             default:
         }
-
         mState = state;
     }
 

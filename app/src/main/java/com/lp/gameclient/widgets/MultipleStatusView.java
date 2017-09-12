@@ -190,8 +190,6 @@ public class MultipleStatusView extends RelativeLayout{
 
     /**
      * 设置空布局
-     * create by marno/2016/5/19
-     *
      * @param emptyLayoutResId 空视图布局资源id
      */
     public void setEmptyViewResId(int emptyLayoutResId) {
@@ -200,8 +198,6 @@ public class MultipleStatusView extends RelativeLayout{
 
     /**
      * 设置空布局
-     * create by marno/2016/5/19
-     *
      * @param contentLayoutResId 内容视图布局资源id
      */
     public void setContentViewResId(int contentLayoutResId) {
@@ -210,8 +206,6 @@ public class MultipleStatusView extends RelativeLayout{
 
     /**
      * 设置空布局
-     * create by marno/2016/5/19
-     *
      * @param loadingLayoutResId 加载视图布局资源id
      */
     public void setLoadingViewResId(int loadingLayoutResId) {
