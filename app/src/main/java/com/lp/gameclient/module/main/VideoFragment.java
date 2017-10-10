@@ -68,7 +68,7 @@ public class VideoFragment extends BaseFragment {
     @Override
     protected void initView(View view, Bundle saveInstanceState) {
         mXRecyclerView.setLayoutManager(LayoutHelper.getLinearLayout(mContext));
-        mXRecyclerView.setLoadingListenr(this);
+        mXRecyclerView.setLoadingListener(this);
 
         setAdapter();
     }

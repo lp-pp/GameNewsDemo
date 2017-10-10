@@ -55,7 +55,7 @@ public class PictureFragment extends BaseFragment {
     protected void initView(View view, Bundle saveInstanceState) {
         mXRecyclerView.setHasFixedSize(true);
         mXRecyclerView.setLayoutManager(LayoutHelper.getVerticalStagLayout());
-        mXRecyclerView.setLoadingListenr(this);
+        mXRecyclerView.setLoadingListener(this);
 
         setAdapter();
     }
