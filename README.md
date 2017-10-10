@@ -17,5 +17,3 @@ This is GameNewsDemo Project
       FAB动画：fafaldo/FABToolbar
       其他：CardView，RecyclerView，ToolBar，FloatingActionBar等    
 
-#二、声明 
-    接口是抓取网络数据，仅用于非商业用途，如做为商业使用，请自行联系接口提供方。本人概不负责。
