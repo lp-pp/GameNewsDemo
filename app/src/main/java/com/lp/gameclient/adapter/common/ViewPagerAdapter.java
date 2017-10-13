@@ -32,7 +32,7 @@ public abstract class ViewPagerAdapter<T> extends BaseViewPagerAdapter<T, PagerA
             return PagerAdapterHelper.get(context, convertView, parent, layoutResId, position);
         else {
             if (convertView == null)
-                return PagerAdapterHelper.get(context, createView(convertView, position), parent, position, true);
+                return PagerAdapterHelper.get(context, createView(parent, position), parent, position, true);
             else
                 return PagerAdapterHelper.get(context, convertView, parent, position, false);
         }

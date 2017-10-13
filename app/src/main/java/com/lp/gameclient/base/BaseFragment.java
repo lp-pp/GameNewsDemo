@@ -29,10 +29,14 @@ public abstract class BaseFragment extends RxFragment implements XRecyclerView.L
     protected abstract int getLayout();
     //获取顶部工具栏
     protected abstract View getToolBarView();
-    //初始化数据
-    protected abstract void initData();
+
     //初始化Fragment布局
     protected abstract void initView(View view, Bundle saveInstanceState);
+
+    //初始化数据
+    protected void initData(){
+
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -60,7 +64,7 @@ public abstract class BaseFragment extends RxFragment implements XRecyclerView.L
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(getLayout(), container, false);
-        mUnbinder = ButterKnife.bind(this);
+        mUnbinder = ButterKnife.bind(this, view);
         initView(view, savedInstanceState);
         initData();
         return view;

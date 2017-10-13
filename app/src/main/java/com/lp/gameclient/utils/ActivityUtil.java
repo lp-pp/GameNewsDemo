@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import java.io.InputStream;
-
 /**
  * Created by LP on 2017/8/10/20:20.
  */
@@ -19,7 +17,7 @@ public class ActivityUtil {
         Intent intent = new Intent(context, clazz);
         Bundle bundle = new Bundle();
         bundle.putString(ARG_1, arg1);
-        intent.putExtras(Bundle);
+        intent.putExtras(bundle);
         context.startActivity(intent);
     }
 }
