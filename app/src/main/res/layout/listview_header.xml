@@ -57,7 +57,7 @@
             android:layout_toLeftOf="@id/listview_header_text"
             android:src="@drawable/ic_pulltorefresh_arrow" />
 
-        <com.marno.gameclient.widgets.mRecyclerview.SimpleViewSwitcher
+        <com.lp.gameclient.widgets.mRecyclerview.SimpleViewSwitcher
             android:id="@+id/listview_header_progressbar"
             android:layout_width="30dip"
             android:layout_height="30dip"
@@ -66,6 +66,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="10dp"
             android:visibility="invisible" />
+
     </RelativeLayout>
 
 </LinearLayout>
