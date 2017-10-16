@@ -32,7 +32,7 @@
         app:hideDuration="200"
         app:horizontalMargin="16dp"
         app:showDuration="600"
-        app:layout_behavior="com.marno.gameclient.widgets.MFabBehavior"
+        app:layout_behavior="com.lp.gameclient.widgets.MFabBehavior"
         app:verticalMargin="32dp">
 
 
