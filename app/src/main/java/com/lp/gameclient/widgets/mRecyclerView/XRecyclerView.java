@@ -10,6 +10,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lp.gameclient.utils.PPLog;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,34 +48,39 @@ public class XRecyclerView extends RecyclerView {
 
 
     public XRecyclerView(Context context) {
-        super(context);
-//        this(context, null);
+        this(context, null);
+        PPLog.i("XRecyclerView-->>11");
     }
 
     public XRecyclerView(Context context, AttributeSet attrs) {
-        super(context, attrs, 0);
-//        this(context, attrs, 0);
+        this(context, attrs, 0);
+        PPLog.i("XRecyclerView-->>22");
     }
 
     public XRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        PPLog.i("XRecyclerView-->>33");
         init();
     }
 
     private void init() {
+        PPLog.i("init-->>1111");
         if (pullRefreshEnabled) {
             ArrowRefreshHeader refreshHeader = new ArrowRefreshHeader(getContext());
             mHeaderViews.add(0, refreshHeader);
             mRefreshHeader = refreshHeader;
             mRefreshHeader.setProgressStyle(mRefreshProgressStyle);
         }
+        PPLog.i("init-->>2222");
         LoadingMoreFooter footView = new LoadingMoreFooter(getContext());
         footView.setProgressStyle(mLoadingMoreProgressStyle);
         addFootView(footView);
         mFootViews.get(0).setVisibility(GONE);
+        PPLog.i("init-->>3333");
     }
 
     public void addHeaderView(View view) {
+        PPLog.i("XRecyclerView-->>addHeaderView");
         if (pullRefreshEnabled && !(mHeaderViews.get(0) instanceof ArrowRefreshHeader)) {
             ArrowRefreshHeader refreshHeader = new ArrowRefreshHeader(getContext());
             mHeaderViews.add(0, refreshHeader);
@@ -87,22 +94,30 @@ public class XRecyclerView extends RecyclerView {
     public void addFootView(final View view) {
         mFootViews.clear();
         mFootViews.add(view);
+        PPLog.i("1-->>" + mFootViews.size());
     }
 
     public void loadMoreComplete() {
         isLoadingData = false;
-        View footView = mFootViews.get(0);
-        if (footView instanceof LoadingMoreFooter) {
-            ((LoadingMoreFooter) footView).setState(LoadingMoreFooter.STATE_COMPLETE);
-        } else {
-            footView.setVisibility(View.GONE);
+        PPLog.i("2-->>" + mFootViews.size());
+        if (mFootViews.size() > 0){
+            View footView = mFootViews.get(0);
+            if (footView instanceof LoadingMoreFooter) {
+                ((LoadingMoreFooter) footView).setState(LoadingMoreFooter.STATE_COMPLETE);
+            } else {
+                footView.setVisibility(View.GONE);
+            }
         }
     }
 
     public void setNoMore(boolean noMore) {
         this.isNoMore = noMore;
-        View footView = mFootViews.get(0);
-        ((LoadingMoreFooter) footView).setState(this.isNoMore ? LoadingMoreFooter.STATE_NOMORE : LoadingMoreFooter.STATE_COMPLETE);
+        PPLog.i("3-->>" + mFootViews.size());
+        if (mFootViews.size() > 0){
+            View footView = mFootViews.get(0);
+            ((LoadingMoreFooter) footView).setState(this.isNoMore ? LoadingMoreFooter.STATE_NOMORE
+                    : LoadingMoreFooter.STATE_COMPLETE);
+        }
     }
 
     public void reset() {
@@ -113,12 +128,15 @@ public class XRecyclerView extends RecyclerView {
 
     public void noMoreLoading() {
         isLoadingData = false;
-        View footView = mFootViews.get(0);
-        isNoMore = true;
-        if (footView instanceof LoadingMoreFooter) {
-            ((LoadingMoreFooter) footView).setState(LoadingMoreFooter.STATE_NOMORE);
-        } else {
-            footView.setVisibility(View.GONE);
+        PPLog.i("4-->>" + mFootViews.size());
+        if (mFootViews.size() > 0){
+            View footView = mFootViews.get(0);
+            isNoMore = true;
+            if (footView instanceof LoadingMoreFooter) {
+                ((LoadingMoreFooter) footView).setState(LoadingMoreFooter.STATE_NOMORE);
+            } else {
+                footView.setVisibility(View.GONE);
+            }
         }
     }
 

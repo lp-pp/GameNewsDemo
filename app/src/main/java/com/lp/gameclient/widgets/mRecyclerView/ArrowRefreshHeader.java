@@ -88,6 +88,7 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
         mHeaderTimeView = (TextView)findViewById(R.id.last_refresh_time);
         measure(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         mMeasuredHeight = getMeasuredHeight();
+
     }
 
     public void setProgressStyle(int style) {
