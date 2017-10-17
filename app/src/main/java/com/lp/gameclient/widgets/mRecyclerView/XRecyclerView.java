@@ -46,11 +46,13 @@ public class XRecyclerView extends RecyclerView {
 
 
     public XRecyclerView(Context context) {
-        this(context, null);
+        super(context);
+//        this(context, null);
     }
 
     public XRecyclerView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs, 0);
+//        this(context, attrs, 0);
     }
 
     public XRecyclerView(Context context, AttributeSet attrs, int defStyle) {
